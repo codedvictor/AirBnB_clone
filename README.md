@@ -17,7 +17,7 @@ This is the first step towards building our first full web application: the AirB
 This first step will focus on building a basic console using the Cmd Python module, to handle objects of the project with methods to create, show, update, all and destroy the classes instances.
 
 
-## Environment :desktop_computer:
+## Environment :snake:
 
 All files had been written/executed on Ubuntu 20.04 LTS using python3 (version 3.8.5)
 
@@ -31,7 +31,17 @@ All files had been written/executed on Ubuntu 20.04 LTS using python3 (version 3
 
 
 ## Files
-
+```
+	README.md
+models
+   |-- __init__.py
+   |-- base_model.py
+tests
+   |-- __init__.py
+   |-- test_models
+   |   |-- __init__.py
+   |   |-- test_base_model.py
+```
 
 ## Installation
 
