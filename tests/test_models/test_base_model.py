@@ -38,6 +38,14 @@ class BaseModelsTests(unittest.TestCase):
             print(self.model)
             self.assertEqual(std_out.getvalue(), res + '\n')
 
+    def test_kwargs(self):
+        """ Test the creation of an instance of BaseModel using kwargs """
+        dic_m = self.model.to_dict()
+        model_new = BaseModel(**dic_m)
+        self.assertEqual(model_new.id, self.model.id)
+        self.assertEqual(model_new.created_at, self.model.created_at)
+        self.assertEqual(model_new.updated_at, self.model.updated_at)
+
     def testSave(self):
         """ Test the save method with created_at and updated_at """
         self.model.name = "House"
