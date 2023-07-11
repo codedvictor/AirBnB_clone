@@ -5,6 +5,8 @@
 import unittest
 from models.base_model import BaseModel
 from datetime import datetime
+from unittest.mock import patch
+from io import StringIO
 
 
 class BaseModelsTests(unittest.TestCase):
@@ -26,6 +28,15 @@ class BaseModelsTests(unittest.TestCase):
         self.assertEqual(self.model.name, model_json['name'])
         self.assertEqual(self.model.my_number, model_json['my_number'])
         self.assertEqual('BaseModel', model_json['__class__'])
+
+    def test_str(self):
+        """ Test the str magic method """
+        res = "[BaseModel] ({}) {}".format(self.model.id,
+                                           str(self.model.__dict__))
+
+        with patch('sys.stdout', new=StringIO()) as std_out:
+            print(self.model)
+            self.assertEqual(std_out.getvalue(), res + '\n')
 
     def testSave(self):
         """ Test the save method with created_at and updated_at """
