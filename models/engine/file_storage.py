@@ -7,7 +7,6 @@ import json
 import os
 
 
-
 class FileStorage:
     """This class FileStorage
     serializes instances to a JSON file
@@ -17,7 +16,6 @@ class FileStorage:
 
     __file_path = "file.json"
     __objects = {}
-
 
     def all(self):
         """return dict object"""
@@ -51,4 +49,4 @@ class FileStorage:
                       encoding="UTF-8") as dest_file:
                 read_objects = json.load(dest_file)
                 for k, v in read_objects.items():
-                    self.new(dic[v['__class__']](**v))        
+                    self.new(dic[v['__class__']](**v))
