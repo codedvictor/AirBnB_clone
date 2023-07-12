@@ -61,13 +61,13 @@ class FileStorageTests(unittest.TestCase):
         self.assertEqual(hasattr(FileStorage, '_FileStorage__file_path'), True)
         self.assertEqual(hasattr(FileStorage, '_FileStorage__objects'), True)
 
-    def testsave(self):
+    def testSave(self):
         """verify if JSON exists"""
         self.model.save()
         self.assertEqual(os.path.exists(storage._FileStorage__file_path), True)
         self.assertEqual(storage.all(), storage._FileStorage__objects)
 
-    def test_reload(self):
+    def testReload(self):
         """test if reload all objects"""
         self.model.save()
         self.assertEqual(os.path.exists(storage._FileStorage__file_path), True)
@@ -78,7 +78,7 @@ class FileStorageTests(unittest.TestCase):
         for (k, v) in storage.all().items():
             self.assertEqual(all_objs[k].to_dict(), v.to_dict())
 
-    def test_save_self(self):
+    def testSave_self(self):
         """ Check save with self """
         msg = "save() takes 1 positional argument but 2 were given"
         with self.assertRaises(TypeError) as e:
@@ -86,7 +86,7 @@ class FileStorageTests(unittest.TestCase):
 
         self.assertEqual(str(e.exception), msg)
 
-    def test_new(self):
+    def testNew(self):
         """ Test if 'new' method is working good """
         dic = self.model.to_dict()
         new_k = "{}.{}".format(dic['__class__'], dic['id'])
