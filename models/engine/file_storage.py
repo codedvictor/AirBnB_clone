@@ -7,6 +7,7 @@ import json
 import os
 
 
+
 class FileStorage:
     """This class FileStorage
     serializes instances to a JSON file
@@ -17,6 +18,7 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
 
+
     def all(self):
         """return dict object"""
         return (FileStorage.__objects)
@@ -25,12 +27,14 @@ class FileStorage:
         """sets new objects with key id"""
         new_object = "{}.{}".format(type(obj).__name__,
                                     obj.id)
+
         FileStorage.__objects[new_object] = obj
 
     def save(self):
         """serialize __object to JSON file in file path"""
         new_dict = {}
         for key in FileStorage.__objects.keys():
+
             new_dict[key] = FileStorage.__objects[key].to_dict()
         with open(FileStorage.__file_path, 'w',
                   encoding="UTF-8") as dest_file:
@@ -46,6 +50,5 @@ class FileStorage:
             with open(FileStorage.__file_path, 'r',
                       encoding="UTF-8") as dest_file:
                 read_objects = json.load(dest_file)
-
                 for k, v in read_objects.items():
-                    self.new(dic[v['__class__']](**v))
+                    self.new(dic[v['__class__']](**v))        
