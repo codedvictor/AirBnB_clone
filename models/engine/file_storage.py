@@ -4,7 +4,7 @@ from another one by using a
 dictionary representation
 """
 import json
-from models.base_model import BaseModel
+import os
 
 
 class FileStorage:
@@ -17,8 +17,6 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
 
-    object_class = {"BaseModel": BaseModel}
-
     def all(self):
         """return dict object"""
         return (FileStorage.__objects)
@@ -27,30 +25,27 @@ class FileStorage:
         """sets new objects with key id"""
         new_object = "{}.{}".format(type(obj).__name__,
                                     obj.id)
-        FileStorage.__objects[new_objects] = obj
+        FileStorage.__objects[new_object] = obj
 
     def save(self):
         """serialize __object to JSON file in file path"""
         new_dict = {}
         for key in FileStorage.__objects.keys():
-            new_dict[key] = FileStorage.__objects[key].to_json()
+            new_dict[key] = FileStorage.__objects[key].to_dict()
         with open(FileStorage.__file_path, 'w',
                   encoding="UTF-8") as dest_file:
-            json.dumps(new_dict, dest_file)
+            json.dump(new_dict, dest_file)
 
     def reload(self):
         """deserializes the JSON file to object if file path exist"""
-        try:
+        from models.base_model import BaseModel
+
+        dic = {'BaseModel': BaseModel}
+
+        if os.path.exists(FileStorage.__file_path) is True:
             with open(FileStorage.__file_path, 'r',
                       encoding="UTF-8") as dest_file:
                 read_objects = json.load(dest_file)
 
-                new_object_class = ["BaseModel"]
-
-                for key, value in read_objects.items():
-                    if value.get("__class__") in new_object_class:
-                        met = value.get("__class__")
-                        self.__objects[key] = eval(str(
-                            met))(read_objects[key])
-        except Exception:
-            pass
+                for k, v in read_objects.items():
+                    self.new(dic[v['__class__']](**v))
