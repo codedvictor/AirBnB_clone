@@ -41,6 +41,7 @@ models
    |-- engine
    |   |-- __init__.py
    |   |-- file_storage.py
+   |-- user.py
 tests
    |-- __init__.py
    |-- test_models
