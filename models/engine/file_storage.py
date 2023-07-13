@@ -39,8 +39,12 @@ class FileStorage:
     def reload(self):
         """deserializes the JSON file to object if file path exist"""
         from models.base_model import BaseModel
+        from models.user import User
 
-        dic = {'BaseModel': BaseModel}
+        dic = {
+            'BaseModel': BaseModel,
+            'User': User
+        }
 
         if os.path.exists(FileStorage.__file_path) is True:
             with open(FileStorage.__file_path, 'r',

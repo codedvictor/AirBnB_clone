@@ -2,6 +2,7 @@
 """Entry point module for the command interpreter"""
 import cmd
 from models.base_model import BaseModel
+from models.user import User
 from models import storage
 import shlex
 
@@ -10,18 +11,21 @@ class HBNBCommand(cmd.Cmd):
     """Console commande class"""
 
     prompt = "(hbnb) "
-    classes = ['BaseModel']
+    classes = ['BaseModel', 'User']
+    dic = {
+        'BaseModel': BaseModel,
+        'User': User
+    }
     cmnd = ['create', 'show', 'destroy', 'all', 'update']
 
     def do_create(self, cls):
         """Create new instance of cls and saves it"""
         if not cls:
             print("** class name missing **")
-        elif cls not in HBNBCommand.classes:
+        elif cls not in HBNBCommand.dic.keys():
             print("** class doesn't exist **")
         else:
-            dic = {'BaseModel': BaseModel}
-            model = dic[cls]()
+            model = HBNBCommand.dic[cls]()
             print(model.id)
             model.save()
 
@@ -32,7 +36,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         args = arg.split(' ')
-        if args[0] not in HBNBCommand.classes:
+        if args[0] not in HBNBCommand.dic.keys():
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
@@ -52,7 +56,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         args = arg.split(' ')
-        if args[0] not in HBNBCommand.classes:
+        if args[0] not in HBNBCommand.dic.keys():
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
@@ -80,7 +84,7 @@ class HBNBCommand(cmd.Cmd):
             print(list_inst)
         else:
             args = arg.split(' ')
-            if args[0] not in HBNBCommand.classes:
+            if args[0] not in HBNBCommand.dic.keys():
                 print("** class doesn't exist **")
             else:
                 for (k, v) in all_objs.items():
@@ -100,7 +104,7 @@ class HBNBCommand(cmd.Cmd):
             argv += ar
         args = shlex.split(argv)
 
-        if args[0] not in HBNBCommand.classes:
+        if args[0] not in HBNBCommand.dic.keys():
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
