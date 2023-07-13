@@ -11,7 +11,6 @@ class HBNBCommand(cmd.Cmd):
     """Console commande class"""
 
     prompt = "(hbnb) "
-    classes = ['BaseModel', 'User']
     dic = {
         'BaseModel': BaseModel,
         'User': User
@@ -19,7 +18,9 @@ class HBNBCommand(cmd.Cmd):
     cmnd = ['create', 'show', 'destroy', 'all', 'update']
 
     def do_create(self, cls):
-        """Create new instance of cls and saves it"""
+        """Create new instance of cls and saves it
+        (type create class_name)
+        """
         if not cls:
             print("** class name missing **")
         elif cls not in HBNBCommand.dic.keys():
@@ -31,7 +32,9 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """Prints the string representation of an instance based
-        on the class name"""
+        on the class name
+        (type show class_name obj_id)
+        """
         if not arg:
             print("** class name missing **")
             return
@@ -51,7 +54,9 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_destroy(self, arg):
-        """ Deletes an instance based on the class name and id"""
+        """ Deletes an instance based on the class name and id
+        (type destroy class_name obj_id)
+        """
         if not arg:
             print("** class name missing **")
             return
@@ -74,7 +79,9 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """Prints all string representation of all instances based
-        or not on the class name"""
+        or not on the class name
+        (type all or all class_name)
+        """
         all_objs = storage.all()
         list_inst = []
 
@@ -95,7 +102,9 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """Updates an instance based on the class name and id
-        by adding or updating attribute"""
+        by adding or updating attribute
+        (type update class_name obj_id attribute attribute_value)
+        """
         if not arg:
             print("** class name missing **")
             return
@@ -125,11 +134,11 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_quit(self, line):
-        """Exit the program: Quit"""
+        """Exit the program: (type quit)"""
         return True
 
     def do_EOF(self, line):
-        """Exit the program: EOF or ^D"""
+        """Exit the program: (type EOF or ^D)"""
         return True
 
     def emptyline(self):
