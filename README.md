@@ -34,6 +34,7 @@ All files had been written/executed on Ubuntu 20.04 LTS using python3 (version 3
 ```
 AUTHORS
 README.md
+console.py
 models
    |-- __init__.py
    |-- base_model.py
