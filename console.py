@@ -129,7 +129,7 @@ class HBNBCommand(cmd.Cmd):
                         print("** value missing **")
                     else:
                         setattr(v, args[2], args[3])
-                        storage.save()
+                        v.save()
                     return
             print("** no instance found **")
 
