@@ -5,7 +5,7 @@
    - [Intro](#Intro)
    - [Environment](#Environment)
    - [Requirements](#Requirements)
-   - [Files](#Files)
+   - [Files](#Files_Structure)
    - [Installation](#Installation)
    - [Usage](#Usage)
    - [Authors](#Authors)
@@ -30,7 +30,7 @@ All files had been written/executed on Ubuntu 20.04 LTS using python3 (version 3
  - All tests can be executed by using this command: python3 -m unittest discover tests
 
 
-## Files
+## Files Structure :deciduous_tree:
 ```
 AUTHORS
 README.md
@@ -50,6 +50,7 @@ tests
    |   |-- test_engine
    |   |   |-- __init__.py
    |   |   |-- test_file_storage.py
+   |   |-- test_user.py
 ```
 
 ## Installation
