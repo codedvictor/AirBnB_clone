@@ -23,8 +23,7 @@ class FileStorage:
 
     def new(self, obj):
         """sets new objects with key id"""
-        new_object = "{}.{}".format(type(obj).__name__,
-                                    obj.id)
+        new_object = "{}.{}".format(type(obj).__name__, obj.id)
         FileStorage.__objects[new_object] = obj
 
     def save(self):
@@ -40,10 +39,20 @@ class FileStorage:
         """deserializes the JSON file to object if file path exist"""
         from models.base_model import BaseModel
         from models.user import User
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.place import Place
+        from models.review import Review
 
         dic = {
             'BaseModel': BaseModel,
-            'User': User
+            'User': User,
+            'State': State,
+            'City': City,
+            'Amenity': Amenity,
+            'Place': Place,
+            'Review': Review
         }
 
         if os.path.exists(FileStorage.__file_path) is True:
