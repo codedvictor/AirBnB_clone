@@ -11,7 +11,7 @@ class FileStorage:
     """This class FileStorage
     serializes instances to a JSON file
     and deserializes JSON file
-    to instances
+    to instances.
     """
 
     __file_path = "file.json"
