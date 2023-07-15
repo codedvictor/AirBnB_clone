@@ -4,5 +4,8 @@ from models.base_model import BaseModel
 
 
 class State(BaseModel):
-    """ Defines State class attribute"""
+    """ Defines State class attribute
+    Public class attributes:
+    name: string - empty string
+    """
     name = ""
