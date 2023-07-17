@@ -96,7 +96,7 @@ class HBNBCommand(cmd.Cmd):
                     del storage._FileStorage__objects[k]
                     storage.save()
                     return
-            print("**no instance found **")
+            print("** no instance found **")
 
     def do_all(self, arg):
         """Prints all string representation of all instances based
