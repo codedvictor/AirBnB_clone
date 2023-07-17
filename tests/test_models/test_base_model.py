@@ -61,6 +61,14 @@ class BaseModelsTests(unittest.TestCase):
         self.assertEqual(dict_a['created_at'], dict_b['created_at'])
         self.assertNotEqual(dict_a['updated_at'], dict_b['updated_at'])
 
+    def testSave2(self):
+        """ Test the save method """
+        model = BaseModel()
+        update = model.updated_at
+        model.save()
+
+        self.assertNotEqual(update, model.updated_at)
+
 
 if __name__ == '__main__':
     unittest.main()
