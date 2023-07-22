@@ -54,14 +54,32 @@ ul.popover {
     width: 100%;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
-    diplay: none;
+    display: none;
+    list-style-type: none;
+    top: 0;
+    margin-top: 70px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 20px;
     box-sizing: border-box;
+    position: absolute;
+    z-index: 1;
 }
 
-ul.popover ul li h2 {
+ul.popover li ul {
+    list-style-type: none;
+}
+
+ul.popover li .first_s {
+    margin-top: 0;
+}
+
+ul.popover li h2 {
     font-size: 16px;
+    margin-bottom: 0;
+    margin-top: 20px;
 }
 
 .filters div:hover ul.popover {
-    display: box;
+    display: block;
 }
