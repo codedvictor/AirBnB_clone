@@ -76,66 +76,69 @@
 .user {
     display: flex;
     padding-top: 20px;
+    margin-bottom: 0;
 }
 
 .description {
     text-align: left;
 }
 
-.article .amenities, .article .reviews {
+article .amenities, article .reviews {
     margin-top: 40px;
     display: block;
     text-align: left;
+    position: relative;
 }
 
-.article .amenities h2, .article .reviews h2 {
+article .amenities h2, article .reviews h2 {
     font-size: 16px;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     margin-bottom: 0;
     border-bottom: 1px solid #DDDDDD;
 }
 
-.article .amenities ul {
-    list-style-type: none;
+article .amenities ul {
+    list-style: none;
     margin-top: 0;
+    padding-left: 0;
 }
 
-.article .amenities ul li {
+article .amenities ul li {
     height: 20px;
     background-size: contain;
-    padding-left: 25px;
+    padding-left: 35px;
     background-repeat: no-repeat;
     line-height: 25px;
 }
 
-.artcile .amenities ul li.tv {
+article .amenities ul li.tv {
     background-image: url('../images/icon_tv.png');
 }
 
-.article .amenities ul li.wifi {
+article .amenities ul li.wifi {
     background-image: url('../images/icon_wifi.png');
 }
 
-.article .amenities ul li.pets {
+article .amenities ul li.pets {
     background-image: url('../images/icon_pets.png');
 }
 
-.article .amenities ul li.kitc {
+article .amenities ul li.kitc {
     background-image: url('../images/icon_kitc.png');
 }
 
-.article .reviews ul {
+article .reviews ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-.article .reviews ul li h3 {
+article .reviews ul li h3 {
     font-size: 14px;
     margin-bottom: 5px;
 }
 
-.article .reviews ul li p {
+article .reviews ul li p {
     margin-top: 5px;
     font-size: 12px;
 }
